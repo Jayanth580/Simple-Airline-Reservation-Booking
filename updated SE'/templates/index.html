@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Reservation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+
+<!-- <body> 
+    <img src="../image.webp">
+    <div class="main-div">
+        <h1>Welcome to the Airline Reservation System</h1>
+        <nav>
+            <ul>
+                <li><a href="display_flights.html">Display Available Flights</a></li>
+                <li><a href="book_seat.html">Book a Seat</a></li>
+                <li><a href="display_ticket.html">Display Ticket Details</a></li>
+                <li><a href="delete_ticket.html">Delete a Ticket</a></li>
+            </ul>
+        </nav>
+
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        <ul class="flashes">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}
+
+
+    </div>
+
+</body>-->
+
+<body>
+    <img src="{{ url_for('static',filename='images/image.webp')}}" alt="Airline Image">
+    <div class="main-div">
+        <h1>Welcome to the Airline Reservation System</h1>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('display_flights')}}">Display Available Flights</a></li>
+                <li><a href="{{url_for('book_seat')}}">Book a Seat</a></li>
+                <li><a href="{{url_for('view_tickets')}}">Display Ticket Details</a></li>
+                <li><a href="{{url_for('delete_ticket')}}">Delete a Ticket</a></li>
+            </ul>
+        </nav>
+
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        <ul class="flashes">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}
+
+    </div>
+</body>
+
+
+</html>

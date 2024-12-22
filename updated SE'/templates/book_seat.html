@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Seat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+
+<body>
+    <img src="{{ url_for('static',filename='images/image.webp')}}" alt="Airline Image">
+    <div class="main-div">
+        <h1>Book a Seat</h1>
+        <form action="{{ url_for('book_seat') }}" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required><br>
+            <label for="flightNumber">Flight Number:</label>
+            <select id="flightNumber" name="flightNumber" required>
+                {% for flight in flights %}
+                <option value="{{ flight.flightNumber }}">{{ flight.flightNumber }}</option>
+                {% endfor %}
+            </select><br>
+            <label for="seatClass">Seat Class:</label>
+            <select id="seatClass" name="seatClass" required>
+                <option value="B">Business</option>
+                <option value="E">Economy</option>
+            </select><br>
+            <button type="submit">Book Seat</button>
+        </form>
+        <a href="{{ url_for('index')}}">Back to Home</a>
+    </div>
+
+</body>
+
+</html>

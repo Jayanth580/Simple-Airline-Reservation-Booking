@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Tickets</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <img src="{{ url_for('static',filename='images/image.webp')}}" alt="Airline Image">
+    <div class="main-div">
+        <h1>All Tickets</h1>
+        {% if passengers %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Flight Number</th>
+                    <th>Seat Class</th>
+                    <th>Seat Number</th>
+                    <th>Departure City</th>
+                    <th>Arrival City</th>
+                </tr>
+            </thead>
+            <!-- <tbody>
+                {% for passenger in passengers %}
+                <tr>
+                    <td>{{ passenger.name }}</td>
+                    <td>{{ passenger.age }}</td>
+                    <td>{{ passenger.flightNumber }}</td>
+                    <td>{{ passenger.seatClass }}</td>
+                    <td>{{ passenger.seatNumber }}</td>
+                    <!-- Find the flight details matching the current passenger 
+                    {% set flight = None %} {% for f in flights %} {% if f.flightNumber == passenger.flightNumber %} {% set flight = f %} {% endif %} {% endfor %}
+                    <td>{{ flight.departureCity if flight else 'N/A'}}</td>
+                    <td>{{ flight.arrivalCity if flight else 'N/A' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody> -->
+            <tbody>
+                {% for passenger in passengers %}
+                <tr>
+                    <td>{{ passenger.name }}</td>
+                    <td>{{ passenger.age }}</td>
+                    <td>{{ passenger.flightNumber }}</td>
+                    <td>{{ passenger.seatClass }}</td>
+                    <td>{{ passenger.seatNumber }}</td>
+                    <!-- Find the flight details matching the current passenger -->
+                    {% set flight = None %} {% for f in flights %} {% if f.flightNumber == passenger.flightNumber %} {% set flight = f %}
+                    <td>{{ flight.departureCity if flight else 'N/A' }}</td>
+                    <td>{{ flight.arrivalCity if flight else 'N/A' }}</td>
+                    {% endif %} {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+    
+    
+    
+    
+    
+    
+    
+    
+        </table>
+        {% else %}
+        <p>No tickets available.</p>
+        {% endif %}
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+    
+</body>
+
+</html>

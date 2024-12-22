@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Flights</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+
+<body>
+    <img src="{{ url_for('static',filename='images/image.webp')}}" alt="Airline Image">
+    <div class="main-div">
+        <h1>Available Flights</h1>
+        <table>
+            <tr>
+                <th>Flight Number</th>
+                <th>Departure City</th>
+                <th>Arrival City</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Business Seats</th>
+                <th>Economy Seats</th>
+            </tr>
+            {% for flight in flights %}
+            <tr>
+                <td>{{ flight.flightNumber }}</td>
+                <td>{{ flight.departureCity }}</td>
+                <td>{{ flight.arrivalCity }}</td>
+                <td>{{ flight.departureTime }}</td>
+                <td>{{ flight.arrivalTime }}</td>
+                <td>{{ flight.availableBusinessSeats }}</td>
+                <td>{{ flight.availableEconomySeats }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ url_for('index') }}">Back to Home</a>  
+    </div>
+    
+
+</body>
+
+</html>

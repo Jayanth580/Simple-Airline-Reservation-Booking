@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Ticket</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+
+<!-- <head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Seat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>-->
+
+
+<body>
+    <img src="{{ url_for('static',filename='images/image.webp')}}" alt="Airline Image">
+    <div class="main-div">
+        <h1>Ticket Details</h1>
+        <table>
+            <tr>
+                <th>
+                    <centre>
+                        {% if passenger and flight %}
+
+                        <p>Flight Number: {{ flight.flightNumber }}</p>
+                        <p>Departure City: {{ flight.departureCity }}</p>
+                        <p>Arrival City: {{ flight.arrivalCity }}</p>
+                        <p>Departure Time: {{ flight.departureTime }}</p>
+                        <p>Arrival Time: {{ flight.arrivalTime }}</p>
+                        <p>Name: {{ passenger.name }}</p>
+                        <p>Age: {{ passenger.age }}</p>
+                        <p>Seat Class: {{ passenger.seatClass }}</p>
+                        <p>Seat Number: {{ passenger.seatNumber }}</p>
+                        {% else %}
+                        <p>No ticket details available.</p>
+                        {% endif %}
+                    </centre>
+                </th>
+            </tr>
+        </table>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+
+</body>
+
+</html>
